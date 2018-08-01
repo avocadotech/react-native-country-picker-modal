@@ -51,7 +51,9 @@ export default StyleSheet.create({
     flexDirection: 'row',
     height: getHeightPercent(7),
     justifyContent: 'flex-start',
-    alignItems: 'center'
+    alignItems: 'center',
+    borderBottomWidth: 2 / PixelRatio.get(),
+    borderColor: '#EDEEF1',
   },
   itemCountryFlag: {
     justifyContent: 'center',
@@ -62,7 +64,6 @@ export default StyleSheet.create({
   itemCountryName: {
     justifyContent: 'center',
     width: '70%',
-    borderBottomWidth: 2 / PixelRatio.get(),
     borderBottomColor: '#ccc',
     height: 20
   },
