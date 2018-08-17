@@ -4,6 +4,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import SafeAreaView from 'react-native-safe-area-view'
+import AlphaList from 'react-native-vertical-alphabet'
 
 import {
   StyleSheet,
@@ -260,7 +261,7 @@ export default class CountryPicker extends Component {
     this.setState({ modalVisible: true })
   }
 
-  scrollTo(letter) {
+  scrollTo = (letter) => {
     // find position of first country that starts with letter
     const index = this.state.cca2List
       .map(country => this.getCountryName(countries[country])[0])
@@ -418,15 +419,12 @@ export default class CountryPicker extends Component {
                   }
                 />
                 {!this.props.hideAlphabetFilter && (
-                  <ScrollView
-                    contentContainerStyle={styles.letters}
-                    keyboardShouldPersistTaps="always"
-                  >
-                    {this.state.filter === '' &&
-                      this.state.letters.map((letter, index) =>
-                        this.renderLetters(letter, index)
-                      )}
-                  </ScrollView>
+                  <AlphaList
+                    style={{
+                      alignSelf: 'center',
+                    }}
+                    onTapLetter={this.scrollTo}
+                  />
                 )}
               </View>
             </KeyboardAvoidingView>
