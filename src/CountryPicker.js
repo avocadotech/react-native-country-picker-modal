@@ -422,6 +422,17 @@ export default class CountryPicker extends Component {
                   <AlphaList
                     style={{
                       alignSelf: 'center',
+                      position: 'absolute',
+                      right: 0,
+                    }}
+                    letterStyle={{
+                      textAlign: 'center',
+                      fontSize: 11,
+                      width: 20,
+                      height: 15,
+                      fontFamily: 'Helvetica',
+                      fontWeight: 'normal',
+                      color: '#B7BEC7',
                     }}
                     onTapLetter={this.scrollTo}
                   />
