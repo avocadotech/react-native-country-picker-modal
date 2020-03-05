@@ -35,6 +35,7 @@ export const DEFAULT_COUNTRY_CONTEXT = {
   search,
   getLetters,
   getCountryInfoAsync,
+  pickerStyles: {},
 }
 export const CountryContext = React.createContext<CountryContextParam>(
   DEFAULT_COUNTRY_CONTEXT,

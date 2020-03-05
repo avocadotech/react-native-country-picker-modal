@@ -88,10 +88,11 @@ interface CountryItemProps {
   withEmoji?: boolean
   withCallingCode?: boolean
   withCurrency?: boolean
+  pickerStyles: any
   onSelect(country: Country): void
 }
 const CountryItem = (props: CountryItemProps) => {
-  const { activeOpacity, itemHeight, flagSize } = useTheme()
+  const { activeOpacity, flagSize } = useTheme()
   const {
     country,
     onSelect,
@@ -99,6 +100,7 @@ const CountryItem = (props: CountryItemProps) => {
     withEmoji,
     withCallingCode,
     withCurrency,
+    pickerStyles = {},
   } = props
   const extraContent: string[] = []
   if (
@@ -111,6 +113,7 @@ const CountryItem = (props: CountryItemProps) => {
   if (withCurrency && country.currency && country.currency.length > 0) {
     extraContent.push(country.currency.join('|'))
   }
+
   return (
     <TouchableOpacity
       key={country.cca2}
@@ -118,7 +121,7 @@ const CountryItem = (props: CountryItemProps) => {
       onPress={() => onSelect(country)}
       {...{ activeOpacity }}
     >
-      <View style={[styles.itemCountry, { height: itemHeight }]}>
+      <View style={[styles.itemCountry, pickerStyles.itemWrapper]}>
         {withFlag && (
           <Flag
             {...{ withEmoji, countryCode: country.cca2, flagSize: flagSize! }}
@@ -129,6 +132,7 @@ const CountryItem = (props: CountryItemProps) => {
             allowFontScaling={false}
             numberOfLines={2}
             ellipsizeMode='tail'
+            style={pickerStyles.text}
           >
             {country.name}
             {extraContent.length > 0 && ` (${extraContent.join(', ')})`}
@@ -160,6 +164,7 @@ interface CountryListProps {
   withCallingCode?: boolean
   withCurrency?: boolean
   flatListProps?: FlatListProps<Country>
+  pickerStyles: any;
   onSelect(country: Country): void
 }
 
@@ -186,6 +191,7 @@ export const CountryList = (props: CountryListProps) => {
     filter,
     flatListProps,
     filterFocus,
+    pickerStyles,
   } = props
 
   const flatListRef = useRef<FlatList<Country>>(null)
@@ -240,6 +246,7 @@ export const CountryList = (props: CountryListProps) => {
           withFlag,
           withCallingCode,
           withCurrency,
+          pickerStyles,
           onSelect,
         })}
         {...{

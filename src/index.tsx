@@ -38,6 +38,7 @@ interface Props {
   disableNativeModal?: boolean
   visible?: boolean
   containerButtonStyle?: StyleProp<ViewStyle>
+  pickerStyles?: StyleProp<{itemWrapper: ViewStyle, text: ViewStyle}>;
   renderFlagButton?(props: FlagButtonProps): ReactNode
   renderCountryFilter?(props: CountryFilterProps): ReactNode
   onSelect(country: Country): void

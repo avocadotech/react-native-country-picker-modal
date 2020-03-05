@@ -7,7 +7,7 @@ export const CountryText = (props: TextProps & { children: ReactNode }) => {
   return (
     <Text
       {...props}
-      style={{ fontFamily, fontSize, color: onBackgroundTextColor }}
+      style={[{ fontFamily, fontSize, color: onBackgroundTextColor }, props.style]}
     />
   )
 }

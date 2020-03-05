@@ -16,7 +16,7 @@ const styles = StyleSheet.create({
   }
 })
 
-export type CountryFilterProps = TextInputProps
+export type CountryFilterProps = TextInputProps & { onClose: () => void }
 
 export const CountryFilter = (props: CountryFilterProps) => {
   const {
